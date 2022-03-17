@@ -1,16 +1,18 @@
 import { useState } from 'react';
-import { useCreateContactMutation } from 'components/API/api-service';
+import { useDispatch, useSelector } from 'react-redux';
+import actions from 'components/redux/actions';
 import s from './ContactForm.module.css';
+import { getContacts } from 'components/redux/selectors';
 
 function ContactForm() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const [createContact] = useCreateContactMutation();
+  const dispatch = useDispatch();
+  const contacts = useSelector(getContacts);
 
   const handleInputChange = e => {
     const { name, value } = e.currentTarget;
-
     switch (name) {
       case 'name':
         setName(value);
@@ -27,9 +29,20 @@ function ContactForm() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    createContact({ name, number });
-    setName('');
-    setNumber('');
+
+    const isContact = contacts.find(contact => contact.name === name);
+    if (isContact) {
+      alert(`${name} is already in contact`);
+    } else {
+      dispatch(
+        actions.contactAdd({
+          name,
+          number,
+        }),
+      );
+      setName('');
+      setNumber('');
+    }
   };
 
   return (
