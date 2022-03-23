@@ -1,4 +1,4 @@
-import actions from 'components/redux/actions';
+import actions from 'redux/actions';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import s from './Filter.module.css';

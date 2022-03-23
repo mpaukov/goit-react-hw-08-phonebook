@@ -1,5 +1,5 @@
-import actions from 'components/redux/actions';
-import { getFilteredContacts } from 'components/redux/selectors';
+import actions from 'redux/actions';
+import { getFilteredContacts } from 'redux/selectors';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { ContactItem } from './ContactItem';
