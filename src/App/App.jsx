@@ -9,6 +9,7 @@ import { PrivateRoute } from 'components/PrivateRoute';
 import ContactForm from 'components/ContactForm';
 import Filter from 'components/Filter';
 import ContactList from 'components/ContactList';
+import { PublicRoute } from 'components/PublicRoute';
 
 function App() {
   const dispatch = useDispatch();
@@ -22,10 +23,24 @@ function App() {
 
       <Routes>
         <Route path="/" element={<HomeView />} />
-        <Route path="register" element={<RegisterView />} />
-        <Route path="login" element={<LoginView />} />
         <Route
-          path="/contacts"
+          path="register"
+          element={
+            <PublicRoute>
+              <RegisterView />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="login"
+          element={
+            <PublicRoute>
+              <LoginView />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="contacts"
           element={
             <PrivateRoute>
               <ContactForm />
