@@ -1,4 +1,4 @@
-import actions from 'redux/actions';
+import { changeFilter } from 'redux/contacts/actions';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import s from './Filter.module.css';
@@ -16,7 +16,7 @@ const Filter = ({ title }) => {
         type="text"
         name="filter"
         value={value}
-        onChange={e => dispatch(actions.changeFilter(e.currentTarget.value))}
+        onChange={e => dispatch(changeFilter(e.currentTarget.value))}
       />
     </label>
   );
