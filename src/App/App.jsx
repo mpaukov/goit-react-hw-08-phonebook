@@ -4,7 +4,6 @@ import { Container } from './App.styled';
 import AppBar from 'components/AppBar';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { authOperations } from 'redux/auth';
 import { PrivateRoute } from 'components/PrivateRoute';
 import ContactForm from 'components/ContactForm';
@@ -14,13 +13,6 @@ import { PublicRoute } from 'components/PublicRoute';
 
 function App() {
   const dispatch = useDispatch();
-  let navigate = useNavigate();
-  console.log('🚀 ~ file: App.jsx ~ line 18 ~ App ~ navigate', navigate);
-
-  useEffect(() => {
-    navigate('../');
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   useEffect(() => {
     dispatch(authOperations.fetchCurrentUser());
