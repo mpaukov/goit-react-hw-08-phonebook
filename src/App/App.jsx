@@ -15,6 +15,8 @@ import { PublicRoute } from 'components/PublicRoute';
 function App() {
   const dispatch = useDispatch();
   let navigate = useNavigate();
+  console.log('🚀 ~ file: App.jsx ~ line 18 ~ App ~ navigate', navigate);
+
   useEffect(() => {
     navigate('../');
     // eslint-disable-next-line react-hooks/exhaustive-deps
